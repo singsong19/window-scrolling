@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Window Scrolling</title>
+    <style>  
+        body{
+            background-color: cadetblue;
+            /* overflow: hidden;  영역을 벗어나면 스크롤이 안되도록 숨김*/
+        }
+        div{
+            background-color: brown;
+            width: 250px;
+            height: 250px;
+            margin: 5px;
+            border-radius: 4px;
+        }
+        .special{
+            background-color: coral;
+        }
+        aside{
+            position: fixed;
+            top: 20px;
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div class="special" id="special"></div>
+    <div></div>
+    <!-- 본문 영역의 옆에 사용하는 태그로 주 컨텐츠와는 직접적인 연관성이 없음! 
+        주로 사잍드바 형태로 나타남-->
+    <aside>
+        <button class="scroll-by">Scroll by 100px(y)</button>
+        <button class="scroll-to">Scroll to 100px(y)</button>
+        <button class="scroll-into">Scroll into special</button>
+    </aside>
+
+    <script>
+        // scrollby 100px (100px씩 스크롤)
+        const scrollBy = document.querySelector('.scroll-by') 
+        scrollBy.addEventListener('click', () =>{
+            window.scrollBy({top: 100, left: 0, behavior: 'smooth'})
+        });
+
+        // scrollto 100px (100px로 스크롤되어 이동)
+        const scrollTo = document.querySelector('.scroll-to') 
+        scrollTo.addEventListener('click', () =>{
+            window.scrollTo(0, 100)
+        });
+
+        // scrollinto special (누르면 special로 이동)
+        const scrollInto = document.querySelector('.scroll-into') 
+        scrollInto.addEventListener('click', () =>{
+            special.scrollIntoView();
+        });
+    </script>
+</body>
+</html>
